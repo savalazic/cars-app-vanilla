@@ -5,8 +5,10 @@ import './Card.css';
 
 const Card = (card: Car) => {
   const content = `
-    <div class="card" style="background-image: url(${card.image})">
-      <div>${card.name}</div>
+    <div>
+      <div class="card" style="background-image: url(${card.image})">
+        <div>${card.name}</div>
+      </div>
     </div>
   `;
   return content;
