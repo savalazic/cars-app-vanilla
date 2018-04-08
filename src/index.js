@@ -1,4 +1,16 @@
 // @flow
+import 'normalize.css';
+import { getCars } from './api/carApi';
+import CardList from './components/CardList';
+import render from './util/render';
+
 import './index.css';
 
-global.document.getElementById('app').innerHTML = "Let's go";
+const state = {};
+
+getCars().then(data => {
+  state.cars = data;
+  const cardList = CardList(state.cars);
+
+  render(cardList, '#app');
+});

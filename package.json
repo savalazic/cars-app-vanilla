@@ -34,6 +34,7 @@
     "chalk": "^2.3.2",
     "compression": "^1.7.2",
     "express": "^4.16.3",
+    "normalize.css": "^8.0.0",
     "open": "^0.0.5",
     "whatwg-fetch": "^2.0.4"
   },
