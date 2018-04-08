@@ -1,16 +1,40 @@
 // @flow
 import 'normalize.css';
 import { getCars } from './api/carApi';
-import CardList from './components/CardList';
 import render from './util/render';
-
+import App from './app';
 import './index.css';
 
-const state = {};
+const state = { searchTerm: '' };
+
+const setSearchTerm = (searchTerm: string) => {
+  state.searchTerm = searchTerm;
+};
+
+const updateCards = () => {
+  const cardNode = document.querySelectorAll('.card-wrapper');
+  [...cardNode].forEach(card => {
+    if (
+      card
+        .querySelector('.card-title')
+        .textContent.toLowerCase()
+        .includes(state.searchTerm.toLowerCase())
+    ) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+};
+
+const onSearchChange = (e: HTMLInputElement) => {
+  setSearchTerm(e.target.value);
+  updateCards();
+};
 
 getCars().then(data => {
-  state.cars = data.cars;
-  const cardList = CardList(state.cars);
+  state.data = data;
+  const app = App(data, onSearchChange);
 
-  render(cardList, '#app');
+  render(app, '#app');
 });
