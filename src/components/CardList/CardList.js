@@ -5,7 +5,7 @@ import type { Car, Data } from '../../types';
 import './CardList.css';
 
 const CardList = (data: Data) => {
-  let content = (data.cars || []).reduce((body, car: Car) => {
+  let content = (data || []).reduce((body, car: Car) => {
     const contentBody = `
       ${body}
       ${Card(car)}

@@ -9,7 +9,7 @@ import './index.css';
 const state = {};
 
 getCars().then(data => {
-  state.cars = data;
+  state.cars = data.cars;
   const cardList = CardList(state.cars);
 
   render(cardList, '#app');
